@@ -13,8 +13,6 @@ public class Main extends Application implements GraphicsAgent {
 
     //------------LOGIC--------------
     private final GameModel model = new GameModel(this);
-    //------------SETTINGS--------------
-    private final int prefCellSize = 50;
     //------------GRAPHICS---------------------
     private final GridPane centralPane = new GridPane();
     private final MyRightPane rightPane = new MyRightPane(15);
@@ -27,10 +25,7 @@ public class Main extends Application implements GraphicsAgent {
         centralPane.setAlignment(Pos.CENTER);
         for (int i = 0; i < model.getWidth(); i++) {
             for (int j = 0; j < model.getHeight(); j++) {
-                GameCellButton button = new GameCellButton(i, j);
-                button.setPrefSize(prefCellSize, prefCellSize);
-                button.setOnAction(event -> model.press(button.getXY()));
-
+                GameCellButton button = new GameCellButton(i, j, model);
                 centralPane.add(button, i, j);
             }
         }
